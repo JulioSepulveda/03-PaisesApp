@@ -1,0 +1,26 @@
+<h2>Busquedas</h2>
+<hr>
+<ul class="list-group">
+    
+    <!-- routerLinkActive nos permite sombrear el bot'on activo en cada momento 
+            routerLinkActiveOptions es un atributo y por eso se pone entre []. exact> = true hace que solo se sombree el botón que tiene la url exacta -->
+    <li routerLink="" 
+        routerLinkActive="active" 
+        [routerLinkActiveOptions]="{ exact: true }" 
+        class="list-group-item">
+            Buscar País
+    </li>
+    <li routerLink="region" 
+        routerLinkActive="active"
+        class="list-group-item">
+            Por Región
+    </li>
+    
+    <!-- routerLink es un atributo de la clase RouterModule que hemos importado. Nos hace navegar al path indicado sin refrescar el navegador, 
+            es decir, no recarga toda la información. "capital" es uno de los path indicados en el fichero app-routing.module.ts -->
+    <li routerLink="capital"
+        routerLinkActive="active" 
+        class="list-group-item">
+            Por Capital
+    </li>
+</ul>

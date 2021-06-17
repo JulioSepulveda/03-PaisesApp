@@ -1,0 +1,10 @@
+<!-- ngSubmit pertenece a la clase FormsModule y recoje lo escrito en el input cuando se da a enter
+     autocomplete indica si queremos o no que rellene la busqueda según vamos escribiendo -->
+<form (ngSubmit)="buscar()" autocomplete="off">
+<input  type="text"
+        name="termino"
+        class="form-control"
+        [(ngModel)]="termino"
+        [placeholder]="placeholder"
+        (input)="teclaPresionada( $event )">
+</form>

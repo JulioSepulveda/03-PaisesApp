@@ -1,0 +1,55 @@
+<div class="animate__animated animate__fadeIn animate__faster">
+    <h3>Buscar por región: <small> {{regionActiva | titlecase }} </small></h3>
+    <hr>
+
+    <h5>Seleccione región</h5>
+
+    <div class="row">
+        <div class="col">
+
+            <!-- la diferencia entre class y [class] es que [class] solo se asigna en este caso al botón activo -->
+            <!-- <button *ngFor="let region of regiones" 
+                    class="btn btn-outline-primary"
+                    [class.btn-primary]="regionActiva===region"
+                    (click)="activarRegion( region )">
+                {{ region }}
+            </button> -->
+
+            <!-- De esta forma pone la clase btn-primary o btn-outline-primary en función de si esta activa o no. Mejora lo anterior ya que en la anterior forma 
+                la clase btn-outline-primary siempre estaba marcada y dejabamos de ver el texto del botón marcado cuando no tenemos el ratón encima de el. 
+                Esta forma no es la más eficiente para angular -->
+            <!-- <button *ngFor="let region of regiones" 
+                    class="btn btn-outline-primary"
+                    [ngClass]="{
+                        'btn-primary': regionActiva === region,
+                        'btn-outline-primary': regionActiva !== region
+                    }"
+                    (click)="activarRegion( region )">
+                {{ region }}
+            </button> -->
+
+            <!-- Esta es la forma más eficiente de realizar lo mismo que en los dos casos anteriores -->
+            <!-- <button *ngFor="let region of regiones" 
+                    [class]=" (region === regionActiva) ? 'btn btn-primary' : ' btn btn-outline-primary'"
+                    (click)="activarRegion( region )">
+                {{ region }}
+            </button> -->
+
+            <!-- Esta forma es metiendo el código en el archivo ts y asi dejar el HTML más simple. Es exacamente lo mismo que antes -->
+            <button *ngFor="let region of regiones" 
+                    [class]="getClassCSS( region )"
+                    (click)="activarRegion( region )">
+                {{ region | titlecase }}
+            </button>
+        </div>
+    </div>
+
+    <hr>
+</div>
+
+
+<div *ngIf="paises.length > 0" class="row">
+    <div class="col">
+        <app-pais-tabla [paises] = "paises"></app-pais-tabla>
+    </div>
+</div>
